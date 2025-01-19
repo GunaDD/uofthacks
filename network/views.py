@@ -19,7 +19,7 @@ def index(request):
     new_type = []
     for post in post_list:
         is_liked = post.likes.filter(id=request.user.id).exists()
-        video_path = f"./../../../media/outputvideo{post.length}.mp4"
+        video_path = f"./../../../media/outputvideo{post.id}.mp4"
 
         print(f"index load {video_path}\n")
 
@@ -95,7 +95,7 @@ def create_post(request):
         print(post.video_file.path)
 
         post.save()
-        output_path = os.path.abspath(f"../Backend/media/outputvideo{length}.mp4")
+        output_path = os.path.abspath(f"../Backend/media/outputvideo{post.id}.mp4")
         
         # output_path = "Users/darma/desktop/asjdsda.mp4"
 
